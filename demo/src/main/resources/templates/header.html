@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" content="text/html" http-equiv="Content-Type"></meta>
+</head>
+<body>
+	<nav class="navbar navbar-dark bg-primary" th:fragment="header">
+		<a class="navbar-brand" th:href="@{/contato/all}" th:text="#{pagina.titulo}"></a>
+		<ul class="nav navbar-nav">
+			<li class="nav-item">
+				<a class="nav-link" href="#" data-toggle="modal" data-target="#save-contato" data-action="adicionar" th:text="#{link.novo}"></a>
+			</li>
+		</ul>
+	</nav>
+</body>
+</html>

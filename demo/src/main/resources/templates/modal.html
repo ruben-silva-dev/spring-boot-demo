@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" content="text/html" http-equiv="Content-Type"></meta>
+<title>Insert title here</title>
+</head>
+<body>
+
+	<!-- Modal salvar contato -->
+	<div class="modal fade" id="save-contato" role="document" th:fragment="modal-salvar-contato">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-hidden="true">
+						&times;<span class="sr-only">Close</span>
+					</button>
+					<h4 class="modal-title"></h4>
+				</div>
+				
+				<div class="modal-body">
+					<form id="salvar-contato-form" th:action="@{/contato/save}" th:object="${contato}" method="post" role="form">
+						<div class="form-group">
+							<div class="form-item">
+								<label for="nome" class="form-control-label" th:text="#{label.nome}"></label>
+								<input id="nome" class="form-control" type="text" th:field="*{nome}"></input>
+							</div>
+							<div class="form-item">
+								<label for="numero" class="form-control-label" th:text="#{label.numero}"></label>
+								<input id="numero" class="form-control" type="text" th:field="*{numero}"></input>
+							</div>
+						</div>
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button id="button-salvar-contato" class="btn btn-success-outline btn-sm" data-dismiss="modal" th:text="#{botao.salvar}"></button>
+					<button type="button" class="btn btn-default-outline btn-sm"
+						data-dismiss="modal" th:text="#{botao.cancelar}"></button>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	
+	<!-- Modal excluir contato -->
+	<div class="modal fade" id="confirm-delete-contato" role="dialog" th:fragment="modal-excluir-contato">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-hidden="true">
+						&times;<span class="sr-only">Close</span>
+					</button>
+					<h4 class="modal-title" th:text="#{titulo.excluir}"></h4>
+				</div>
+				<div class="modal-body"></div>
+				<div class="modal-footer">
+					<button id="button-delete-contato" class="btn btn-danger-outline btn-sm" data-dismiss="modal" th:text="#{botao.excluir}"></button>
+					<button type="button" class="btn btn-default-outline btn-sm"
+						data-dismiss="modal" th:text="#{botao.cancelar}"></button>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+</body>
+</html>

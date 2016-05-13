@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" content="text/html" http-equiv="Content-Type"></meta>
+
+<link th:replace="footer :: css-bootstrap"></link>
+<script th:replace="footer :: jquery"></script>
+<script th:replace="footer :: demo"></script>
+<script th:replace="footer :: js-bootstrap"></script>
+<script th:replace="footer :: i18n-jquery"></script>
+
+<title th:text="#{pagina.titulo}"></title>
+</head>
+<body>
+	<div th:replace="header :: header"></div>
+
+	<div class="container">
+		<table id="tabela-contatos" th:fragment="contatos" th:unless="${#lists.isEmpty(contatos)}" class="table table-hover table-striped">
+			<thead>
+				<tr>
+					<th th:text="#{tabela.nome}"></th>
+					<th th:text="#{tabela.numero}"></th>
+					<th th:text="#{tabela.excluir}"></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:id="contato + ${contato.id}" th:each="contato : ${contatos}">
+					<td th:text="${contato.nome}"></td>
+					<td th:text="${contato.numero}"></td>
+					<td><button type="button" class="btn btn-sm btn-danger-outline" data-toggle="modal" data-target="#confirm-delete-contato" th:text="#{botao.excluir}" th:attr="data-id=${contato.id}, data-nome=${contato.nome}"></button></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	
+	<div th:replace="modal :: modal-salvar-contato"></div>
+	
+	<div th:replace="modal :: modal-excluir-contato"></div>
+	
+	
+	<footer th:replace="footer :: footer"></footer>
+</body>
+</html>
